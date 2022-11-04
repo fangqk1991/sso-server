@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/sso-server",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SSO Server.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -22,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "@fangcha/account": "^0.3.0",
+    "@fangcha/app-error": "^1.4.0",
     "@fangcha/eslint": "^0.2.0",
     "@fangcha/generator": "^0.1.1",
     "@fangcha/webpack": "^0.9.1",

@@ -942,6 +942,11 @@
   dependencies:
     bcrypt "^5.1.0"
 
+"@fangcha/app-error@^1.4.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/app-error/-/app-error-1.5.0.tgz#09dfdd3d0d6d7598c3594cd711da2ff7373c7e88"
+  integrity sha512-ZLlYk4+/vwMg015hko1e+tQvyRQ3g5U+Mo2tEgDyYfGj3acBOt+QG5GAhwMlLVwxAvAsyLqqMRV/PIkgcaeF3w==
+
 "@fangcha/eslint@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@fangcha/eslint/-/eslint-0.2.0.tgz#aca6b6a1e57fd4fb0de809bad38bfdcc7f1baec2"
