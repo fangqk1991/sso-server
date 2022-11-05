@@ -4,20 +4,24 @@ import { _UserAuth } from './models/extensions/_UserAuth'
 import assert from '@fangcha/assert'
 import { SsoClientParams, SsoValidateUtils } from './common/models'
 import { makeRandomStr } from '@fangcha/tools'
+import { AccountServer } from '@fangcha/account'
 
 interface Options {
   database: FCDatabase
+  accountServer: AccountServer
   tableName_SsoClient?: string
   tableName_UserAuth?: string
 }
 
 export class SsoServer {
   public readonly database: FCDatabase
+  public readonly accountServer: AccountServer
   public readonly SsoClient!: { new (): _SsoClient } & typeof _SsoClient
   public readonly UserAuth!: { new (): _UserAuth } & typeof _UserAuth
 
   constructor(options: Options) {
     this.database = options.database
+    this.accountServer = options.accountServer
 
     class SsoClient extends _SsoClient {}
     SsoClient.addStaticOptions({
