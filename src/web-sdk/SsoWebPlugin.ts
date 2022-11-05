@@ -48,8 +48,8 @@ export const SsoWebPlugin = (options: SsoWebOptions): AppPluginProtocol => {
       },
     ],
   })
-  routerApp.addPreHandleMiddleware(async (ctx, next) => {
-    ctx.ssoServer = options.ssoServer
+  routerApp.addMiddlewareBeforeInit(async (ctx, next) => {
+    ctx.ssoServer = ssoServer
     await next()
   })
   return RouterSdkPlugin({

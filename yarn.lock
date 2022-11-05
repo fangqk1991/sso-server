@@ -1009,10 +1009,10 @@
     lodash "^4.17.15"
     tslib "^2.3.1"
 
-"@fangcha/router@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.13.0.tgz#337f804164c41770557239c0abf4b9899e332047"
-  integrity sha512-l2/Su6KG43yoTB9sMvj2O7q3ceb2n4IIb6XuMDiiAyptArdcXfHqs5LBpifZLLTlRhvmXlQSv5cGOk1W8I7WlA==
+"@fangcha/router@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.14.0.tgz#b9b7d2d04f3438466c42516587d9712d85634820"
+  integrity sha512-QC3qzjKJv5WcaUNRcisiHPg1bkxTh3YFYvMtVQtyGC2th7bU8iz8xH7bSmSybBgEp7GlqXIHLSjJPcRkf9YwgA==
 
 "@fangcha/swagger@^0.1.1":
   version "0.1.1"
