@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/sso-server",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "SSO Server.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
