@@ -5,10 +5,18 @@ import assert from '@fangcha/assert'
 import { SsoClientParams, SsoValidateUtils } from './common/models'
 import { makeRandomStr } from '@fangcha/tools'
 import { AccountServer } from '@fangcha/account'
+import { RedisCache, RedisConfig } from '@fangcha/tools/lib/redis'
+import { SsoClientCenter } from './services/SsoClientCenter'
+import { AuthModel } from './services/oauth/AuthModel'
+import { AuthStorage } from './services/oauth/AuthStorage'
+import * as OAuth2Server from 'oauth2-server'
+import { JointOAuthHandler } from './services/oauth/JointOAuthHandler'
+import { Context } from 'koa'
 
 interface Options {
   database: FCDatabase
   accountServer: AccountServer
+  redisConfig: RedisConfig
   tableName_SsoClient?: string
   tableName_UserAuth?: string
 }
@@ -16,12 +24,18 @@ interface Options {
 export class SsoServer {
   public readonly database: FCDatabase
   public readonly accountServer: AccountServer
+  public readonly cache: RedisCache
+  public readonly clientUtils: SsoClientCenter
+
   public readonly SsoClient!: { new (): _SsoClient } & typeof _SsoClient
   public readonly UserAuth!: { new (): _UserAuth } & typeof _UserAuth
+
+  public readonly oAuth2Server: OAuth2Server
 
   constructor(options: Options) {
     this.database = options.database
     this.accountServer = options.accountServer
+    this.cache = new RedisCache(options.redisConfig)
 
     class SsoClient extends _SsoClient {}
     SsoClient.addStaticOptions({
@@ -36,6 +50,16 @@ export class SsoServer {
       table: options.tableName_UserAuth || 'fc_user_auth',
     })
     this.UserAuth = UserAuth
+
+    this.clientUtils = new SsoClientCenter(SsoClient)
+
+    this.oAuth2Server = new OAuth2Server({
+      model: new AuthModel(new AuthStorage(this.cache), this.clientUtils),
+    })
+  }
+
+  public makeJointOAuthHandler(ctx: Context) {
+    return new JointOAuthHandler(ctx, this.cache)
   }
 
   public async findClient(clientId: string) {
