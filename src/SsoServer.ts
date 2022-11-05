@@ -30,6 +30,8 @@ export class SsoServer {
   public readonly SsoClient!: { new (): _SsoClient } & typeof _SsoClient
   public readonly UserAuth!: { new (): _UserAuth } & typeof _UserAuth
 
+  public readonly authStorage: AuthStorage
+  public readonly authModel: AuthModel
   public readonly oAuth2Server: OAuth2Server
 
   constructor(options: Options) {
@@ -53,8 +55,10 @@ export class SsoServer {
 
     this.clientUtils = new SsoClientCenter(SsoClient)
 
+    this.authStorage = new AuthStorage(this.cache)
+    this.authModel = new AuthModel(this.authStorage, this.clientUtils)
     this.oAuth2Server = new OAuth2Server({
-      model: new AuthModel(new AuthStorage(this.cache), this.clientUtils),
+      model: this.authModel,
     })
   }
 
