@@ -17,11 +17,15 @@ interface Options {
   database: FCDatabase
   accountServer: AccountServer
   redisConfig: RedisConfig
+  webBaseURL: string
+  webJwtSecret: string
   tableName_SsoClient?: string
   tableName_UserAuth?: string
 }
 
 export class SsoServer {
+  public readonly options: Options
+
   public readonly database: FCDatabase
   public readonly accountServer: AccountServer
   public readonly cache: RedisCache
@@ -35,6 +39,7 @@ export class SsoServer {
   public readonly oAuth2Server: OAuth2Server
 
   constructor(options: Options) {
+    this.options = options
     this.database = options.database
     this.accountServer = options.accountServer
     this.cache = new RedisCache(options.redisConfig)
