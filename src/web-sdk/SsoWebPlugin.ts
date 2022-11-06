@@ -6,7 +6,6 @@ import { SignupSpecs } from '../web-specs/SignupSpecs'
 import { ProfileSpecs } from '../web-specs/ProfileSpecs'
 import { SessionSpecs } from '../web-specs/SessionSpecs'
 import { OAuthSpecs } from '../web-specs/OAuthSpecs'
-import { KitProfileSpecDocItem } from '@fangcha/backend-kit/lib/profile'
 import { Session } from '../services/web/Session'
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
 import { SsoServer } from '../SsoServer'
@@ -21,7 +20,6 @@ export const SsoWebPlugin = (options: SsoWebOptions): AppPluginProtocol => {
   const routerApp = new RouterApp({
     useHealthSpecs: true,
     docItems: [
-      KitProfileSpecDocItem,
       {
         name: 'Login',
         pageURL: '/api-docs/v1/login',
