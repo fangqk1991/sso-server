@@ -3,6 +3,7 @@ import { RouterApp } from '@fangcha/router'
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
 import { SsoServer } from '../SsoServer'
 import { SsoClientSpecs } from '../admin-specs/SsoClientSpecs'
+import { KitProfileSpecDocItem } from '@fangcha/backend-kit/lib/profile'
 
 export interface SsoAdminOptions {
   backendPort: number
@@ -17,6 +18,7 @@ export const SsoAdminPlugin = (options: SsoAdminOptions): AppPluginProtocol => {
   const routerApp = new RouterApp({
     useHealthSpecs: true,
     docItems: [
+      KitProfileSpecDocItem,
       {
         name: 'SSO Admin',
         pageURL: '/api-docs/v1/sso-admin',
