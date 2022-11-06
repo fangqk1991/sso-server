@@ -17,9 +17,14 @@ interface Options {
   database: FCDatabase
   accountServer: AccountServer
   redisConfig: RedisConfig
+
   webBaseURL: string
   webJwtSecret: string
+
+  // Default: fc_sso_client
   tableName_SsoClient?: string
+
+  // Default: fc_user_auth
   tableName_UserAuth?: string
 }
 
