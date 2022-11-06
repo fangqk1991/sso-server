@@ -11,7 +11,7 @@ export class SsoClientCenter {
   }
 
   public async reloadClientsData() {
-    console.info(`Reload SSO Clients Data`)
+    console.debug(`Reload SSO Clients Data`)
     const searcher = new this.SsoClient().fc_searcher()
     searcher.processor().addConditionKV('is_enabled', 1)
     const feeds = await searcher.queryAllFeeds()

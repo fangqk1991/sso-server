@@ -1,7 +1,7 @@
 import { FangchaApp } from '@fangcha/backend-kit'
 import { SsoClientsAutoReloadPlugin } from '../../src/sdk'
 import { MySsoServer } from '../services/MySsoServer'
-import { MySsoWebPlugin } from './MySsoWebPlugin'
+import { MySsoWebPlugin } from './web/MySsoWebPlugin'
 
 const app = new FangchaApp({
   env: 'development',
