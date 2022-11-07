@@ -991,13 +991,6 @@
   resolved "https://registry.yarnpkg.com/@fangcha/backend-kit/-/backend-kit-0.31.0.tgz#7ea2b58983018a772a76691939d33a6f4be72c69"
   integrity sha512-l3g2UpNc8oWTm37cXCcT9sBa0bZWEHtIVuYO0oJ2TQRYPOAKi7CEP4Th2jsUZNwij49W6hrE8KNk7uHjBkQyzA==
 
-"@fangcha/config@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@fangcha/config/-/config-0.5.1.tgz#29f330eda58635c7cfa708df854c12cbad5500d4"
-  integrity sha512-AKOpJ2E2L3gJ75pC5y2bjXh/CzJrE/NxjPXsxVtIma1w/lVX/3ONYhnSH7vzfg4UBp2t8axGHAhm+sIScfF0lg==
-  dependencies:
-    lodash "^4.17.21"
-
 "@fangcha/eslint@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@fangcha/eslint/-/eslint-0.3.0.tgz#e6dda031867a96e8059b68d188597c02958f2b46"
@@ -3712,6 +3705,13 @@ faye-websocket@^0.11.3:
   integrity sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==
   dependencies:
     websocket-driver ">=0.5.1"
+
+fc-config@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/fc-config/-/fc-config-0.10.0.tgz#57614c5f1f978110d5e476dee06d8d2be1a1a5c2"
+  integrity sha512-xFbVVkETunQVOHPXvUVwwIpgnSyHYx1GlLlFOl1G9MOiKmTmQsjYW5T49MsMdWDVIs/mZqwVTF2p8oBjzFZ81g==
+  dependencies:
+    lodash "^4.17.21"
 
 fc-feed@^0.19.0:
   version "0.19.0"
