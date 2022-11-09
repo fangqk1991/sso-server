@@ -1,4 +1,3 @@
-import { RouterSdkPlugin } from '@fangcha/router/lib/sdk'
 import { RouterApp } from '@fangcha/router'
 import { LoginSpecs } from '../web-specs/LoginSpecs'
 import { AuthSwaggerModelList } from '../common/models'
@@ -9,6 +8,7 @@ import { OAuthSpecs } from '../web-specs/OAuthSpecs'
 import { Session } from '../services/web/Session'
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
 import { SsoServer } from '../SsoServer'
+import { RouterSdkPlugin } from '@fangcha/backend-kit/lib/router'
 
 export interface SsoWebOptions {
   backendPort: number

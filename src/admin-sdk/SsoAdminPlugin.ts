@@ -1,9 +1,9 @@
-import { RouterSdkPlugin } from '@fangcha/router/lib/sdk'
 import { RouterApp } from '@fangcha/router'
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
 import { SsoServer } from '../SsoServer'
 import { SsoClientSpecs } from '../admin-specs/SsoClientSpecs'
 import { KitProfileSpecDocItem } from '@fangcha/backend-kit/lib/profile'
+import { RouterSdkPlugin } from '@fangcha/backend-kit/lib/router'
 
 export interface SsoAdminOptions {
   backendPort: number
