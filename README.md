@@ -37,6 +37,7 @@ export const MySsoServer = new SsoServer({
   database: <mysql connection>,
   redisConfig: <redis connection config>,
   webBaseURL: <webBaseURL>,
+  webJwtKey: <webJwtKey>,
   webJwtSecret: <webJwtSecret>,
   accountServer: new AccountServer({
     database: <mysql connection>,
