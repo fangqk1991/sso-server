@@ -16,7 +16,7 @@ import { Context } from 'koa'
 interface Options {
   database: FCDatabase
   accountServer: AccountServer
-  redisConfig: RedisConfig
+  redisConfig?: RedisConfig
 
   webBaseURL: string
   webJwtSecret: string
@@ -33,21 +33,20 @@ export class SsoServer {
 
   public readonly database: FCDatabase
   public readonly accountServer: AccountServer
-  public readonly cache: RedisCache
+  public readonly cache!: RedisCache
   public readonly clientUtils: SsoClientCenter
 
   public readonly SsoClient!: { new (): _SsoClient } & typeof _SsoClient
   public readonly UserAuth!: { new (): _UserAuth } & typeof _UserAuth
 
-  public readonly authStorage: AuthStorage
-  public readonly authModel: AuthModel
-  public readonly oAuth2Server: OAuth2Server
+  public readonly authStorage!: AuthStorage
+  public readonly authModel!: AuthModel
+  public readonly oAuth2Server!: OAuth2Server
 
   constructor(options: Options) {
     this.options = options
     this.database = options.database
     this.accountServer = options.accountServer
-    this.cache = new RedisCache(options.redisConfig)
 
     class SsoClient extends _SsoClient {}
     SsoClient.addStaticOptions({
@@ -65,11 +64,14 @@ export class SsoServer {
 
     this.clientUtils = new SsoClientCenter(SsoClient)
 
-    this.authStorage = new AuthStorage(this.cache)
-    this.authModel = new AuthModel(this.authStorage, this.clientUtils)
-    this.oAuth2Server = new OAuth2Server({
-      model: this.authModel,
-    })
+    if (options.redisConfig) {
+      this.cache = new RedisCache(options.redisConfig)
+      this.authStorage = new AuthStorage(this.cache)
+      this.authModel = new AuthModel(this.authStorage, this.clientUtils)
+      this.oAuth2Server = new OAuth2Server({
+        model: this.authModel,
+      })
+    }
   }
 
   public makeJointOAuthHandler(ctx: Context) {
