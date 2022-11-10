@@ -1,4 +1,5 @@
 export * from './SsoServer'
+export * from './SsoClientManager'
 export * from './models/extensions/_SsoClient'
 export * from './models/extensions/_UserAuth'
 export * from './services/SsoClientCenter'

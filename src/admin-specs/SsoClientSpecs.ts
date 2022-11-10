@@ -4,20 +4,21 @@ import { SsoClientSpecHandler } from './SsoClientSpecHandler'
 import { SsoClientApis } from '../common/admin-api'
 import { SsoServer } from '../SsoServer'
 import { SsoClientParams } from '../common/models'
+import { SsoClientManager } from '../SsoClientManager'
 
 const factory = new SpecFactory('SSO Client')
 
 factory.prepare(SsoClientApis.ClientPageDataGet, async (ctx) => {
   // const session = ctx.session as FangchaSession
   // session.assertVisitorHasPermission(SsoAdminPermissionKey.OAuthApps)
-  const ssoServer = ctx.ssoServer as SsoServer
-  ctx.body = await ssoServer.SsoClient.getPageResult(ctx.request.query)
+  const clientManager = ctx.clientManager as SsoClientManager
+  ctx.body = await clientManager.SsoClient.getPageResult(ctx.request.query)
 })
 
 factory.prepare(SsoClientApis.MyClientPageDataGet, async (ctx) => {
   const session = ctx.session as FangchaSession
-  const ssoServer = ctx.ssoServer as SsoServer
-  ctx.body = await ssoServer.SsoClient.getPageResult({
+  const clientManager = ctx.clientManager as SsoClientManager
+  ctx.body = await clientManager.SsoClient.getPageResult({
     ...ctx.request.query,
     lockedUser: session.curUserStr(),
   })
@@ -31,8 +32,8 @@ factory.prepare(SsoClientApis.ClientInfoGet, async (ctx) => {
 
 factory.prepare(SsoClientApis.ClientCreate, async (ctx) => {
   const session = ctx.session as FangchaSession
-  const ssoServer = ctx.ssoServer as SsoServer
-  const client = await ssoServer.generateClient(ctx.request.body, session.curUserStr())
+  const clientManager = ctx.clientManager as SsoClientManager
+  const client = await clientManager.generateClient(ctx.request.body, session.curUserStr())
   const data = client.getModelForAdmin()
   data.clientSecret = client.clientSecret
   ctx.body = data
@@ -61,9 +62,9 @@ factory.prepare(SsoClientApis.ClientDelete, async (ctx) => {
 })
 
 factory.prepare(SsoClientApis.ClientAuthPageDataGet, async (ctx) => {
-  const ssoServer = ctx.ssoServer as SsoServer
+  const clientManager = ctx.clientManager as SsoClientManager
   await new SsoClientSpecHandler(ctx).handle(async (client) => {
-    ctx.body = await ssoServer.UserAuth.getPageResult({
+    ctx.body = await clientManager.UserAuth.getPageResult({
       ...ctx.request.query,
       isEnabled: 1,
       clientId: client.clientId,

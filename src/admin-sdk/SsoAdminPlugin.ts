@@ -1,20 +1,21 @@
 import { RouterApp } from '@fangcha/router'
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
-import { SsoServer } from '../SsoServer'
 import { SsoClientSpecs } from '../admin-specs/SsoClientSpecs'
 import { KitProfileSpecDocItem } from '@fangcha/backend-kit/lib/profile'
 import { RouterSdkPlugin } from '@fangcha/backend-kit/lib/router'
+import { SsoClientManager } from '../SsoClientManager'
 
 export interface SsoAdminOptions {
   backendPort: number
   baseURL: string
+  jwtKey: string
   jwtSecret: string
 
-  ssoServer: SsoServer
+  clientManager: SsoClientManager
 }
 
 export const SsoAdminPlugin = (options: SsoAdminOptions): AppPluginProtocol => {
-  const ssoServer = options.ssoServer
+  const clientManager = options.clientManager
   const routerApp = new RouterApp({
     useHealthSpecs: true,
     docItems: [
@@ -27,7 +28,7 @@ export const SsoAdminPlugin = (options: SsoAdminOptions): AppPluginProtocol => {
     ],
   })
   routerApp.addMiddlewareBeforeInit(async (ctx, next) => {
-    ctx.ssoServer = ssoServer
+    ctx.clientManager = clientManager
     await next()
   })
   return RouterSdkPlugin({
@@ -35,7 +36,7 @@ export const SsoAdminPlugin = (options: SsoAdminOptions): AppPluginProtocol => {
     backendPort: options.backendPort,
     routerApp: routerApp,
     jwtProtocol: {
-      jwtKey: 'sso_admin_jwt',
+      jwtKey: options.jwtKey,
       jwtSecret: options.jwtSecret,
     },
   })

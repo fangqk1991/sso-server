@@ -56,7 +56,7 @@ export const SsoWebPlugin = (options: SsoWebOptions): AppPluginProtocol => {
     Session: Session,
     routerApp: routerApp,
     jwtProtocol: {
-      jwtKey: 'sso_web_jwt',
+      jwtKey: ssoServer.options.webJwtKey,
       jwtSecret: ssoServer.options.webJwtSecret,
     },
   })

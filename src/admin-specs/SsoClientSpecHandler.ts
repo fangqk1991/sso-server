@@ -3,6 +3,7 @@ import assert from '@fangcha/assert'
 import { FangchaSession } from '@fangcha/router/lib/session'
 import { _SsoClient } from '../models/extensions/_SsoClient'
 import { SsoServer } from '../SsoServer'
+import { SsoClientManager } from '../SsoClientManager'
 
 export class SsoClientSpecHandler {
   public readonly ctx: Context
@@ -15,8 +16,8 @@ export class SsoClientSpecHandler {
   public async prepareClient() {
     if (!this._client) {
       const ctx = this.ctx
-      const ssoServer = ctx.ssoServer as SsoServer
-      const client = await ssoServer.findClient(ctx.params.clientId)
+      const clientManager = ctx.clientManager as SsoClientManager
+      const client = await clientManager.findClient(ctx.params.clientId)
       assert.ok(!!client, `Client[${ctx.params.clientId} Not Exists`)
 
       const session = ctx.session as FangchaSession

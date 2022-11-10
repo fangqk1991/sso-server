@@ -1,8 +1,8 @@
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
-import { SsoServer } from '../SsoServer'
 import { LoopPerformerHelper } from '@fangcha/backend-kit'
+import { SsoClientManager } from '../SsoClientManager'
 
-export const SsoClientsAutoReloadPlugin = (ssoServer: SsoServer): AppPluginProtocol => {
+export const SsoClientsAutoReloadPlugin = (ssoServer: SsoClientManager): AppPluginProtocol => {
   return {
     appDidLoad: async () => {
       await ssoServer.clientUtils.reloadClientsData()

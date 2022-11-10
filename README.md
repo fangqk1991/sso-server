@@ -14,7 +14,7 @@ yarn add @fangcha/sso-server
 interface Options {
   database: FCDatabase
   accountServer: AccountServer
-  redisConfig?: RedisConfig
+  redisConfig: RedisConfig
 
   webBaseURL: string
   webJwtSecret: string
