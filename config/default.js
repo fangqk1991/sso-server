@@ -1,6 +1,6 @@
 module.exports = {
-  webPort: 12700,
-  webBaseURL: 'http://localhost:12699',
+  webPort: 16130,
+  webBaseURL: 'http://localhost:16129',
   webJwtSecret: '<TmplDemo Random 32>',
   mysql: {
     ssoDB: {

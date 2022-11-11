@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/sso-server",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "SSO Server.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,7 +29,7 @@
     "@fangcha/eslint": "^0.3.2",
     "@fangcha/generator": "^0.1.1",
     "@fangcha/logger": "^0.4.0",
-    "@fangcha/router": "^0.18.1",
+    "@fangcha/router": "^0.19.0",
     "@fangcha/swagger": "^0.1.1",
     "@fangcha/tools": "^1.22.0",
     "@fangcha/webpack": "^0.9.1",
