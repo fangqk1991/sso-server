@@ -8,7 +8,7 @@ import { SsoConstants, SsoErrorPhrase } from '../../common/models'
 import { SsoServer } from '../../SsoServer'
 import { CookieAttr } from 'cookies'
 
-export class Session extends FangchaSession {
+export class SsoSession extends FangchaSession {
   public readonly trackId!: string
   private _jwtCookieStr: string = ''
   private _authInfo: VisitorCoreInfo = {

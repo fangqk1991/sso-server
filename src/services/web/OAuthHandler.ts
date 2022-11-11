@@ -1,6 +1,6 @@
 import { Context } from 'koa'
 import * as OAuthServer from 'oauth2-server'
-import { Session } from './Session'
+import { SsoSession } from './SsoSession'
 import { OAuthToken } from '@fangcha/tools/lib/oauth-client'
 import assert from '@fangcha/assert'
 import { RedirectBreak } from '@fangcha/app-error'
@@ -16,7 +16,7 @@ export class OAuthHandler {
 
   public async handleAuthorizeRequest(handler: (codeData: OAuthServer.AuthorizationCode) => Promise<void>) {
     const context = this.ctx
-    const session = context.session as Session
+    const session = context.session as SsoSession
     const ssoServer = context.ssoServer as SsoServer
     const webBaseURL = ssoServer.options.webBaseURL
     let { toPage } = context.request.query

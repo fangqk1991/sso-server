@@ -1,5 +1,5 @@
 import { Context } from 'koa'
-import { Session } from './Session'
+import { SsoSession } from './SsoSession'
 import { _Account } from '@fangcha/account'
 import { AccountErrorPhrase, AccountSimpleParams, CarrierType } from '@fangcha/account/lib/common/models'
 import { AppException } from '@fangcha/app-error'
@@ -17,7 +17,7 @@ export class LoginService {
       throw AppException.exception(AccountErrorPhrase.AccountHasBeenBlocked)
     }
     const ctx = this.ctx
-    const session = ctx.session as Session
+    const session = ctx.session as SsoSession
     const coreInfo = await accountV2.getVisitorCoreInfo()
     await session.login(coreInfo, ctx)
     ctx.status = 200

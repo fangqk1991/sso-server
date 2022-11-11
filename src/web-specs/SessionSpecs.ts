@@ -1,12 +1,12 @@
 import { SpecFactory } from '@fangcha/router'
 import { SessionApis } from '../common/web-api'
-import { Session } from '../services/web/Session'
+import { SsoSession } from '../services/web/SsoSession'
 import { SsoSessionInfo } from '../common/models'
 
 const factory = new SpecFactory('当前会话')
 
 factory.prepare(SessionApis.SessionInfoGet, async (ctx) => {
-  const session = ctx.session as Session
+  const session = ctx.session as SsoSession
   const data: SsoSessionInfo = {
     userInfo: null,
   } as SsoSessionInfo

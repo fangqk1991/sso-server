@@ -5,7 +5,7 @@ import { SignupSpecs } from '../web-specs/SignupSpecs'
 import { ProfileSpecs } from '../web-specs/ProfileSpecs'
 import { SessionSpecs } from '../web-specs/SessionSpecs'
 import { OAuthSpecs } from '../web-specs/OAuthSpecs'
-import { Session } from '../services/web/Session'
+import { SsoSession } from '../services/web/SsoSession'
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
 import { SsoServer } from '../SsoServer'
 import { RouterSdkPlugin } from '@fangcha/backend-kit/lib/router'
@@ -53,7 +53,7 @@ export const SsoWebPlugin = (options: SsoWebOptions): AppPluginProtocol => {
   return RouterSdkPlugin({
     baseURL: ssoServer.options.webBaseURL,
     backendPort: options.backendPort,
-    Session: Session,
+    Session: SsoSession,
     routerApp: routerApp,
     jwtProtocol: {
       jwtKey: ssoServer.options.webJwtKey,
