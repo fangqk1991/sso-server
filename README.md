@@ -16,9 +16,6 @@ interface Options {
   accountServer: AccountServer
   redisConfig: RedisConfig
 
-  webBaseURL: string
-  webJwtSecret: string
-
   // Default: fc_sso_client
   tableName_SsoClient?: string
 
@@ -36,9 +33,6 @@ import { AccountServer } from '@fangcha/account'
 export const MySsoServer = new SsoServer({
   database: <mysql connection>,
   redisConfig: <redis connection config>,
-  webBaseURL: <webBaseURL>,
-  webJwtKey: <webJwtKey>,
-  webJwtSecret: <webJwtSecret>,
   accountServer: new AccountServer({
     database: <mysql connection>,
   }),
@@ -47,13 +41,13 @@ export const MySsoServer = new SsoServer({
 
 ### Step 2. Use SsoWebPlugin
 ```
+import { WebApp } from '@fangcha/backend-kit/lib/router'
 import { SsoWebPlugin } from '@fangcha/sso-server/lib/web-sdk'
 
-const app = new FangchaApp({
+const app = new WebApp({
   ……
   plugins: [
     SsoWebPlugin({
-      backendPort: AuthConfig.webPort,
       ssoServer: MySsoServer,
     }),
     SsoClientsAutoReloadPlugin(MySsoServer),
