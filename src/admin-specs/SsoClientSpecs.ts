@@ -1,4 +1,4 @@
-import { SpecFactory } from '@fangcha/router'
+import { SpecFactory, SwaggerDocItem } from '@fangcha/router'
 import { FangchaSession } from '@fangcha/router/lib/session'
 import { SsoClientSpecHandler } from './SsoClientSpecHandler'
 import { SsoClientApis } from '../common/admin-api'
@@ -73,3 +73,9 @@ factory.prepare(SsoClientApis.ClientAuthPageDataGet, async (ctx) => {
 })
 
 export const SsoClientSpecs = factory.buildSpecs()
+
+export const SsoClientDocItem: SwaggerDocItem = {
+  name: 'SSO Client',
+  pageURL: '/api-docs/v1/sso-client',
+  specs: SsoClientSpecs,
+}

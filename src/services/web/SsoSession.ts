@@ -1,7 +1,7 @@
 import { Context } from 'koa'
 import * as jsonwebtoken from 'jsonwebtoken'
 import assert from '@fangcha/assert'
-import { FangchaSession } from '@fangcha/router/lib/session'
+import { _SessionApp, FangchaSession } from '@fangcha/router/lib/session'
 import { AppException } from '@fangcha/app-error'
 import { VisitorCoreInfo } from '@fangcha/account/lib/common/models'
 import { SsoConstants, SsoErrorPhrase } from '../../common/models'
@@ -20,7 +20,7 @@ export class SsoSession extends FangchaSession {
   public constructor(ctx: Context) {
     super(ctx)
     this._ssoServer = ctx.ssoServer
-    ctx.cookies.secure = this._ssoServer.options.webBaseURL.startsWith('https')
+    ctx.cookies.secure = _SessionApp.baseURL.startsWith('https')
     {
       this._jwtCookieStr = ctx.cookies.get(SsoConstants.CookieKeyForJWT) || ''
       this._authInfo = this.extractAuthInfo()
@@ -36,7 +36,7 @@ export class SsoSession extends FangchaSession {
     }
     const authInfo = (
       verifySign
-        ? jsonwebtoken.verify(this._jwtCookieStr, this._ssoServer.options.webJwtSecret)
+        ? jsonwebtoken.verify(this._jwtCookieStr, _SessionApp.jwtProtocol.jwtSecret)
         : jsonwebtoken.decode(this._jwtCookieStr)
     ) as VisitorCoreInfo
     if (authInfo) {
@@ -75,7 +75,7 @@ export class SsoSession extends FangchaSession {
     this._authInfo = {
       ...userInfo,
     }
-    const jwtInfo = jsonwebtoken.sign(this._authInfo, this._ssoServer.options.webJwtSecret, {
+    const jwtInfo = jsonwebtoken.sign(this._authInfo, _SessionApp.jwtProtocol.jwtSecret, {
       expiresIn: SsoConstants.JWTExpireTime / 1000,
     })
     const options: CookieAttr = {

@@ -10,10 +10,6 @@ import { ClientManagerOptions, SsoClientManager } from './SsoClientManager'
 interface Options extends ClientManagerOptions {
   accountServer: AccountServer
   redisConfig: RedisConfig
-
-  webBaseURL: string
-  webJwtKey: string
-  webJwtSecret: string
 }
 
 export class SsoServer extends SsoClientManager {

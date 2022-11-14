@@ -6,6 +6,7 @@ import assert from '@fangcha/assert'
 import { RedirectBreak } from '@fangcha/app-error'
 import { SsoServer } from '../../SsoServer'
 import { RetainPagePath, SsoConstants } from '../../common/models'
+import { _SessionApp } from '@fangcha/router/lib/session'
 
 export class OAuthHandler {
   public readonly ctx: Context
@@ -18,7 +19,7 @@ export class OAuthHandler {
     const context = this.ctx
     const session = context.session as SsoSession
     const ssoServer = context.ssoServer as SsoServer
-    const webBaseURL = ssoServer.options.webBaseURL
+    const webBaseURL = _SessionApp.baseURL
     let { toPage } = context.request.query
     let clientId = context.request.query.client_id as string
     if (Array.isArray(clientId)) {
@@ -69,9 +70,10 @@ export class OAuthHandler {
   public async handleTokenRequest(handler: (codeData: OAuthToken) => Promise<void>) {
     const context = this.ctx
     const ssoServer = context.ssoServer as SsoServer
-    if (context.request.body.grant_type === 'authorization_code' && !context.request.body.redirect_uri) {
-      const codeData = await ssoServer.authStorage.getAuthorizationCodeData(context.request.body.code)
-      context.request.body.redirect_uri = codeData?.redirectUri || ''
+    const bodyData = context.request.body as any
+    if (bodyData.grant_type === 'authorization_code' && !bodyData.redirect_uri) {
+      const codeData = await ssoServer.authStorage.getAuthorizationCodeData(bodyData.code)
+      bodyData.redirect_uri = codeData?.redirectUri || ''
     }
     const request = new OAuthServer.Request(context.request)
     const response = new OAuthServer.Response(context.response)
