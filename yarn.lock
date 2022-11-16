@@ -957,10 +957,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fangcha/account@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/account/-/account-0.9.0.tgz#6ad08775b74c7ee5e75531103592396d376a0573"
-  integrity sha512-d65lftQO1PpSfCKwWj+qQF+Ea5tybBAgJ+BGHaaUjJBIV889dpNjUry7Xu/ImdFVd4XW2hp7GRUfDXNMyNypPA==
+"@fangcha/account@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/account/-/account-0.13.0.tgz#92ccf4cecb720ce85c86fce2987c3e06b33e28ac"
+  integrity sha512-cWutdiJh0uooL+Wflqy9YBo8QQDro/S5OM5CPH1VvAdzSQdldkOc9n+KZZ7t/mATmAW4ZlJHkPHzApKBAk74vg==
   dependencies:
     bcrypt "^5.1.0"
 
@@ -986,10 +986,10 @@
   dependencies:
     "@fangcha/app-error" "^1.1.0"
 
-"@fangcha/backend-kit@^0.41.0":
-  version "0.41.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/backend-kit/-/backend-kit-0.41.0.tgz#369f73e730acfe8c0695723102953daad8417da4"
-  integrity sha512-EHtQoajxlovWbhzZnnJoB4X9Jaj8wm15Ca07INgXRIQHLm/G5J0YrZuMBGCiRO6GmVPAdJqxKFHbiOBoQNacqw==
+"@fangcha/backend-kit@^0.43.0":
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/backend-kit/-/backend-kit-0.43.0.tgz#e9924cdb30480b79039c052b4cf1e0e2f53fb581"
+  integrity sha512-DhQwqT22T6ZYPtdJRHNuliTmjRWewsFNn7x5TNwmvYF1PZ3kZ6yg8UzFut2swfgxPhVDxUuf+BCf/nj+GKOGpw==
 
 "@fangcha/eslint@^0.3.2":
   version "0.3.2"
@@ -1026,10 +1026,10 @@
     lodash "^4.17.15"
     tslib "^2.3.1"
 
-"@fangcha/router@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.20.0.tgz#0ddda2693db3615ff6569fde9bd3506630e1c0c9"
-  integrity sha512-jPZeogxgv0GB37jiXJUK4XZUvN6aPO0e6x+LOpoAZ8iITb/JdQLzIK9irAnmV56z1VkKC6Ixo+Aiea+PFnDqkA==
+"@fangcha/router@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.22.0.tgz#b73cc28574f6a0a821c202c9a2fb4cd99995b752"
+  integrity sha512-039Gb1V+RvodTEpYOiAb8QXO0rE1vEz5CEGxMOOTMOC+Ss1d+XqmlBaf7Ijn5vWidLfFnIZIkG/aQAZKIZSBZw==
 
 "@fangcha/swagger@^0.1.1":
   version "0.1.1"

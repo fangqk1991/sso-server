@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/sso-server",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "SSO Server.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -21,15 +21,15 @@
     "oauth2-server": "^3.1.1"
   },
   "devDependencies": {
-    "@fangcha/account": "^0.9.0",
+    "@fangcha/account": "^0.13.0",
     "@fangcha/app-error": "^1.5.0",
     "@fangcha/app-request": "^1.6.0",
     "@fangcha/assert": "^1.1.0",
-    "@fangcha/backend-kit": "^0.41.0",
+    "@fangcha/backend-kit": "^0.43.0",
     "@fangcha/eslint": "^0.3.2",
     "@fangcha/generator": "^0.1.1",
     "@fangcha/logger": "^0.4.0",
-    "@fangcha/router": "^0.20.0",
+    "@fangcha/router": "^0.22.0",
     "@fangcha/swagger": "^0.1.1",
     "@fangcha/tools": "^1.22.0",
     "@fangcha/webpack": "^0.9.1",

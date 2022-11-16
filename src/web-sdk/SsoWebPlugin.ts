@@ -3,7 +3,6 @@ import { SsoSession } from '../services/web/SsoSession'
 import { AppPluginProtocol } from '@fangcha/backend-kit/lib/basic'
 import { SsoServer } from '../SsoServer'
 import { _RouterState } from '@fangcha/backend-kit/lib/router'
-import { JwtSessionSpecDocItem } from '@fangcha/router/lib/main/JwtSessionSpecs'
 import assert from '@fangcha/assert'
 
 export interface SsoWebOptions {
@@ -19,7 +18,6 @@ export const SsoWebPlugin = (options: SsoWebOptions): AppPluginProtocol => {
       })
       const ssoServer = options.ssoServer
       const routerApp = _RouterState.routerApp
-      routerApp.addDocItem(JwtSessionSpecDocItem)
       routerApp.addDocItem(SsoServerDocItem)
       routerApp.addMiddlewareBeforeInit(async (ctx, next) => {
         ctx.ssoServer = ssoServer

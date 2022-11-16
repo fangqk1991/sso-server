@@ -7,6 +7,7 @@ import { DemoConfig } from '../DemoConfig'
 const app = new WebApp({
   env: 'development',
   appName: 'sso-web',
+  useJwtSpecs: true,
   routerOptions: {
     backendPort: DemoConfig.webPort,
     baseURL: DemoConfig.webBaseURL,
