@@ -13,5 +13,6 @@ export const LoginApis = {
     method: 'GET',
     route: '/api/v1/logout',
     description: '(直接访问，非异步请求)注销',
+    skipAuth: true,
   } as Api,
 }
