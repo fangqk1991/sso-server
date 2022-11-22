@@ -25,7 +25,7 @@
     "@fangcha/app-error": "^1.5.0",
     "@fangcha/app-request": "^1.6.0",
     "@fangcha/assert": "^1.1.0",
-    "@fangcha/backend-kit": "^0.43.0",
+    "@fangcha/backend-kit": "^0.47.0",
     "@fangcha/eslint": "^0.3.2",
     "@fangcha/generator": "^0.1.1",
     "@fangcha/logger": "^0.4.0",
