@@ -10,10 +10,13 @@ const factory = new SpecFactory('注册')
 
 factory.prepare(SignupApis.SimpleSignup, async (ctx) => {
   assert.ok(_FangchaState.frontendConfig.signupAble, '注册功能已被关闭')
-  const ssoServer = ctx.ssoServer as SsoServer
-  const accountV2 = await ssoServer.accountServer.createAccount(ctx.request.body)
-  await new LoginService(ctx).onLoginSuccess(accountV2)
   const session = ctx.session as SsoSession
+  const ssoServer = ctx.ssoServer as SsoServer
+  const accountV2 = await ssoServer.accountServer.createAccount({
+    ...ctx.request.body,
+    registerIp: session.realIP,
+  })
+  await new LoginService(ctx).onLoginSuccess(accountV2)
   const email = session.getAuthInfo().email
   _FangchaState.botProxy.notify(`${email} 在 ${session.getRefererUrl()} 注册了账号.`)
   ctx.status = 200
